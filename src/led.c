@@ -19,6 +19,5 @@ void led_example_rhythm(int interval){
 		usleep(interval);
 		*led = *led << 2;
 	}
-	*led = *led << 2;
 	usleep(0);
 }

@@ -52,6 +52,8 @@ int main(int argc, char* argv[]) {
 	init_fnd(fnd);
 	init_clcd(clcd_cmd, clcd_data);
 
+	clcd_entry_mode_set(1, S);
+
 	while(inputter() == TRUE);
 
 	unmapper();
@@ -88,10 +90,8 @@ double getTimeDiff(time_st start, time_st end){
 }
 
 void rhythm_game(){
-	clcd_entry_mode_set(1, S);
-	char* rhythm_string = "Rhythm game";
 	clcd_set_DDRAM(2);
-	clcd_write_string(rhythm_string);
+	clcd_write_string("Rhythm Game");
 
 	time_st start, end;
 
