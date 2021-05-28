@@ -32,6 +32,7 @@ void fnd_clear() {
 	for(i=0; i<MAX_FND; i++){
 		*fnd[i] = 0;
 	}
+	usleep(0);
 }
 
 void fnd_all() {

@@ -35,6 +35,10 @@ typedef enum {
 typedef struct timeval time_st;
 #define SEC_TO_US 1000000.0
 
+enum {
+	PASS, FAIL
+};
+
 double getTimeDiff(time_st start, time_st end);
 
 int main(int argc, char* argv[]);

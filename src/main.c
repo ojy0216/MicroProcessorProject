@@ -144,6 +144,50 @@ void reaction_game(){
 	fnd_number(diff);
 }
 
+void memory_game(){
+	sim_init();
+
+	clcd_set_DDRAM(2);
+	clcd_write_string("Memory Game");
+
+	time_st start, end;
+
+	int genNum;
+	int digit = 1;
+	int playerGuess;
+
+	int gameResult = PASS;
+
+	for(int i = 0; i < MAX_LED; i++){
+		led_write(i + 1);
+
+		genNum = rand() % (digit * 9) + digit;
+		fnd_number(genNum);
+
+		usleep(SEC_TO_US);
+
+		fnd_clear();
+
+		scanf("%d", &playerGuess);
+		if(genNum == playerGuess){
+			dot_show_ox(CORRECT);
+			usleep(SEC_TO_US);
+			dot_clear();
+		}
+		else{
+			dot_show_ox(WRONG);
+			fnd_number(genNum);
+			usleep(SEC_TO_US);
+			gameResult = FAIL;
+			break;
+		}
+
+		digit *= 10;
+	}
+
+	dot_show_face(gameResult);
+}
+
 void sim_init(){
 	clcd_clear_display();
 	dot_clear();
@@ -172,6 +216,7 @@ truth_t inputter() {
 			reaction_game();
 			break;
 		case 3 :
+			memory_game();
 			break;
 		case 4 :
 			break;

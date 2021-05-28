@@ -13,6 +13,16 @@ static unsigned short dot_decimal[10][MAX_DOT] = {
 	{0x78, 0x48, 0x48, 0x48, 0x7f}  // 9
 };
 
+static unsigned short dot_ox[][MAX_DOT] = {
+	{0x3e, 0x41, 0x41, 0x41, 0x3e},	// O
+	{0x22, 0x14, 0x08, 0x14, 0x22}	// X
+};
+
+static unsigned short dot_face[][MAX_DOT] = {
+	{0x04, 0x22, 0x02, 0x22, 0x04},	// smile
+	{0x02, 0x24, 0x04, 0x24, 0x02}	// sad
+};
+
 static short * dot[MAX_DOT];
 
 void init_dot(short * address[]) {
@@ -44,4 +54,16 @@ void dot_countdown(){
 		usleep(DOT_SEC_TO_US);
 	}
 	dot_write(0);
+}
+
+void dot_show_ox(int result){
+	for(int i = 0; i < MAX_DOT; i++)
+		*dot[i] = dot_ox[result][i];
+	usleep(0);
+}
+
+void dot_show_face(int result){
+	for(int i = 0; i < MAX_DOT; i++)
+		*dot[i] = dot_face[result][i];
+	usleep(0);
 }
