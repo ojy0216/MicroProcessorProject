@@ -54,6 +54,8 @@ int main(int argc, char* argv[]) {
 
 	clcd_entry_mode_set(1, S);
 
+	srand(time(NULL));
+
 	while(inputter() == TRUE);
 
 	unmapper();
