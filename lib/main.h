@@ -44,6 +44,9 @@ void emergency_closer();
 
 truth_t inputter();
 
+void sim_init();
+
 void rhythm_game();
+void reaction_game();
 
 #endif

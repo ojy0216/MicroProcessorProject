@@ -92,6 +92,8 @@ double getTimeDiff(time_st start, time_st end){
 }
 
 void rhythm_game(){
+	sim_init();
+
 	clcd_set_DDRAM(2);
 	clcd_write_string("Rhythm Game");
 
@@ -117,9 +119,7 @@ void rhythm_game(){
 }
 
 void reaction_game(){
-	fnd_clear();
-	dot_clear();
-	led_clear();
+	sim_init();
 
 	clcd_set_DDRAM(1);
 	clcd_write_string("Reaction Game");
@@ -142,6 +142,13 @@ void reaction_game(){
 	int diff = (int)(1000 * getTimeDiff(start, end));
 
 	fnd_number(diff);
+}
+
+void sim_init(){
+	clcd_clear_display();
+	dot_clear();
+	fnd_clear();
+	led_clear();
 }
 
 truth_t inputter() {
