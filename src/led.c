@@ -11,6 +11,7 @@ void led_clear(){
 
 void led_all(){
 	*led = (short)~0xFF;
+	usleep(0);
 }
 
 void led_example_rhythm(int interval){

@@ -116,6 +116,34 @@ void rhythm_game(){
 	fnd_number(diff);
 }
 
+void reaction_game(){
+	fnd_clear();
+	dot_clear();
+	led_clear();
+
+	clcd_set_DDRAM(1);
+	clcd_write_string("Reaction Game");
+
+	time_st start, end;
+
+	while(getchar() != '\n');
+
+	int delay = (int)((rand() % 30) * SEC_TO_US / 10 + SEC_TO_US);		// 1 ~ 3 s, 0.1 s interval
+
+	dot_countdown();
+
+	usleep(delay);
+	led_all();
+	gettimeofday(&start, NULL);
+
+	getc(stdin);		// enter detect
+	gettimeofday(&end, NULL);
+
+	int diff = (int)(1000 * getTimeDiff(start, end));
+
+	fnd_number(diff);
+}
+
 truth_t inputter() {
 	int input_int;
 	printf("\n");
@@ -134,6 +162,7 @@ truth_t inputter() {
 			rhythm_game();
 			break;
 		case 2 :
+			reaction_game();
 			break;
 		case 3 :
 			break;
