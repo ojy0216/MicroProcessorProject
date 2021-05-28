@@ -52,5 +52,6 @@ void sim_init();
 
 void rhythm_game();
 void reaction_game();
+void memory_game();
 
 #endif
