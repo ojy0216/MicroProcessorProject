@@ -8,4 +8,5 @@
  void led_all();
  void led_example_rhythm(int interval);
  void led_write(int decimal);
+ void led_blink();
  #endif

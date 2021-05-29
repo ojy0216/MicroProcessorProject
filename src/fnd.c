@@ -78,3 +78,12 @@ void fnd_number(int number){
 
 	usleep(0);
 }
+
+void fnd_baseball(char* guessStr, int s, int b){
+	for(int i = 0; i < 4; i++)
+		fnd_write(guessStr[i] - '0', 7 - i);
+
+	fnd_write(s, 2);
+	*fnd[1] = fnd_minus;
+	fnd_write(b, 0);
+}

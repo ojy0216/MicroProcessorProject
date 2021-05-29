@@ -40,3 +40,12 @@ void led_write(int decimal){
 	*led = led_decimal[decimal];
 	usleep(0);
 }
+
+void led_blink(){
+	for(int i = 0; i < 5; i++){
+		led_all();
+		usleep(200000);
+		led_clear();
+		usleep(200000);
+	}
+}

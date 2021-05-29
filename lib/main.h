@@ -12,6 +12,7 @@
 
 #include <sys/time.h>
 #include <time.h>
+#include <sys/wait.h>
 
 #include "ieb.h"
 #include "led.h"
@@ -53,5 +54,8 @@ void sim_init();
 void rhythm_game();
 void reaction_game();
 void memory_game();
+void baseball_game();
+
+void signalControl();
 
 #endif

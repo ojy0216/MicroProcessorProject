@@ -14,5 +14,6 @@ void fnd_clear();
 void fnd_all();
 void fnd_write(int decimal, int fnd_num);
 void fnd_number(int number);
+void fnd_baseball(char* guessStr, int s, int b);
 
 #endif

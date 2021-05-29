@@ -188,6 +188,92 @@ void memory_game(){
 	dot_show_face(gameResult);
 }
 
+int check_validity(char* input){
+	if(strlen(input) != 4)
+		return FALSE;
+
+	for(int i = 0; i < 4; i++){
+		for(int j = 0; j < i; j++){
+			if(input[i] == input[j])
+				return FALSE;
+		}
+	}
+
+	return TRUE;
+}
+
+void baseball_game(){
+	sim_init();
+
+	clcd_set_DDRAM(1);
+	clcd_write_string("Baseball Game");
+
+	int goal[4];
+	char guessStr[5];
+
+	int s, b;
+
+	/* generate goal number*/
+	for(int i = 0; i < 4; i++){
+		goal[i] = rand() % 10;
+		for(int j = 0; j < i; j++){
+			if(goal[i] == goal[j]){
+				i--;
+				continue;
+			}
+		}
+	}
+
+	for(int round = 1; round < 10; round++){
+		dot_write(round);
+
+		s = 0;
+		b = 0;
+
+		scanf("%s", guessStr);
+
+		if(strcmp(guessStr, "hack") == 0){
+			for(int i = 0; i < 4; i++)
+				fnd_write(goal[i], 3 - i);
+
+			round--;
+			usleep(SEC_TO_US);
+			fnd_clear();
+			continue;
+		}
+
+		if(!check_validity(guessStr)){
+			dot_show_ox(FAIL);
+			usleep(SEC_TO_US);
+			return;
+		}
+
+		/* calculate s, b */
+		for(int i = 0; i < 4; i++){
+			for(int j = 0; j < 4; j++){
+				if(guessStr[i] - '0' == goal[j])
+					b++;
+			}
+			if(guessStr[i] - '0' == goal[i]){
+				s++;
+				b--;
+			}
+		}
+
+		fnd_baseball(guessStr, s, b);
+		
+		if(s == 4){
+			dot_show_face(SUCCESS);
+			led_blink();
+			return;
+		}
+
+		usleep(SEC_TO_US);
+	}
+
+	dot_show_face(FAIL);
+}
+
 void sim_init(){
 	clcd_clear_display();
 	dot_clear();
@@ -219,6 +305,7 @@ truth_t inputter() {
 			memory_game();
 			break;
 		case 4 :
+			baseball_game();
 			break;
 		case 0 :
 			return FALSE;
