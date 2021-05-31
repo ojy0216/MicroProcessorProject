@@ -128,7 +128,7 @@ void reaction_game(){
 
 	while(getchar() != '\n');
 
-	int delay = (int)((rand() % 30) * SEC_TO_US / 10 + SEC_TO_US);		// 1 ~ 3 s, 0.1 s interval
+	int delay = (int)((rand() % 20) * SEC_TO_US / 10 + SEC_TO_US);		// 1 ~ 3 s, 0.1 s interval, in us
 
 	dot_countdown();
 
