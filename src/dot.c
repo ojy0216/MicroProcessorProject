@@ -23,6 +23,10 @@ static unsigned short dot_face[][MAX_DOT] = {
 	{0x02, 0x24, 0x04, 0x24, 0x02}	// sad
 };
 
+static unsigned short dot_question[MAX_DOT] = {
+	0x20, 0x40, 0x45, 0x48, 0x30	// ?
+};
+
 static short * dot[MAX_DOT];
 
 void init_dot(short * address[]) {
@@ -65,5 +69,11 @@ void dot_show_ox(int result){
 void dot_show_face(int result){
 	for(int i = 0; i < MAX_DOT; i++)
 		*dot[i] = dot_face[result][i];
+	usleep(0);
+}
+
+void dot_show_question(){
+	for(int i = 0; i < MAX_DOT; i++)
+		*dot[i] = dot_question[i];
 	usleep(0);
 }

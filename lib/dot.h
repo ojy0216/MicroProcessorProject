@@ -21,4 +21,5 @@
  void dot_countdown();
  void dot_show_ox(int result);
  void dot_show_face(int result);
+ void dot_show_question();
  #endif

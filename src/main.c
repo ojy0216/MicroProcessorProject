@@ -194,6 +194,9 @@ int check_validity(char* input){
 		return FALSE;
 
 	for(int i = 0; i < 4; i++){
+		if(input[i] < '0' || input[i] > '9')
+			return FALSE;
+
 		for(int j = 0; j < i; j++){
 			if(input[i] == input[j])
 				return FALSE;
@@ -244,9 +247,10 @@ void baseball_game(){
 		}
 
 		if(!check_validity(guessStr)){
-			dot_show_ox(FAIL);
+			dot_show_question();
 			usleep(SEC_TO_US);
-			return;
+			round--;
+			continue;
 		}
 
 		/* calculate s, b */
