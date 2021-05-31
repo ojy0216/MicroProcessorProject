@@ -53,6 +53,7 @@ int main(int argc, char* argv[]) {
 	init_clcd(clcd_cmd, clcd_data);
 
 	clcd_entry_mode_set(1, S);
+	clcd_write_string("Mini Game Heaven");
 
 	srand(time(NULL));
 
